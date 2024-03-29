@@ -1,25 +1,18 @@
-import { renderProduct, renderCartTotal } from './renderer.js'
-import { calcCartTotal } from './calc.js'
-import { products } from './constants.js'
-import {
-  autorun,
-  reaction,
-  when,
-} from '../node_modules/mobx/dist/mobx.esm.development.js'
 import { store } from './store.js'
+import { renderProduct, renderCartTotal } from './renderer.js'
+import { autorun } from '../node_modules/mobx/dist/mobx.esm.development.js'
 
 autorun(() => {
+  console.log('#### renderProduct')
   store.products.forEach(renderProduct)
 })
 
 autorun(() => {
-  store.products.forEach(renderProduct)
-})
-
-autorun(() => {
-  renderCartTotal(calcCartTotal(store.products))
+  console.log('#### renderCartTotal')
+  renderCartTotal(store.total)
 })
 
 document.querySelector('.header').addEventListener('click', () => {
-  //! TODO: Increase counter
+  store.increaseHeaderClicks()
+  console.log('#### store.headerClicks', store.headerClicks)
 })

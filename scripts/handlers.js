@@ -1,8 +1,5 @@
-import { products, selectors } from './constants.js'
-import { populateProductCard, renderCartTotal } from './renderer.js'
-import { calcCartTotal } from './calc.js'
 import { store } from './store.js'
-import { action } from '../node_modules/mobx/dist/mobx.esm.development.js'
+import { selectors } from './constants.js'
 
 export function addHandlers(card) {
   card
